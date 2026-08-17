@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Babu ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--pink:#ff4f81;--soft:#ffd9e3;--muted:#b9a5ad}
+html,body{width:100%;height:100%;overflow:hidden}
+body{font-family:Inter,sans-serif;background:#050205;color:#fff}
+.bg{position:fixed;inset:0;z-index:-5;background:
+radial-gradient(circle at 50% 40%,rgba(255,45,100,.18),transparent 32%),
+radial-gradient(circle at 15% 90%,rgba(140,0,60,.15),transparent 32%),
+linear-gradient(135deg,#030103,#17030d 50%,#050105)}
+.bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1px);background-size:42px 42px;opacity:.2}
+
+.page{position:absolute;inset:0;height:100vh;width:100%;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transform:scale(1.04);transition:opacity .8s ease,transform 1s ease}
+.page.active{opacity:1;pointer-events:auto;transform:scale(1)}
+.content{width:100%;max-width:900px;text-align:center}
+.eyebrow{display:inline-block;color:#ff9bb3;font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:9px 15px;border:1px solid rgba(255,120,150,.22);border-radius:999px;background:rgba(255,255,255,.035);backdrop-filter:blur(12px);margin-bottom:24px}
+h1{font:500 clamp(52px,9vw,105px)/.9 "Cormorant Garamond",serif;letter-spacing:-2px;background:linear-gradient(135deg,#fff,#ffd5df,#ff5a87);-webkit-background-clip:text;background-clip:text;color:transparent}
+.subtitle{max-width:610px;margin:24px auto 0;color:var(--muted);font-size:15px;line-height:1.9;font-weight:300}
+.btn{border:0;border-radius:999px;padding:15px 30px;color:white;background:linear-gradient(135deg,#ff4777,#ff174f);box-shadow:0 12px 40px rgba(255,30,90,.25);cursor:pointer;font:500 14px Inter;transition:.3s}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 55px rgba(255,30,90,.4)}
+.small-btn{margin-top:28px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);box-shadow:none}
+.heart{font-size:80px;animation:pulse 1.8s infinite;margin-bottom:18px}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+
+/* opening */
+.opening-photo{width:min(310px,68vw);height:min(390px,52vh);margin:0 auto 28px;border-radius:26px;overflow:hidden;position:relative;box-shadow:0 25px 90px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.12);transform:rotate(-2deg)}
+.opening-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.95)}
+.opening-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.35),transparent 55%)}
+
+/* memories */
+.memory-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;text-align:left}
+.memory-photo{height:58vh;max-height:620px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 25px 80px rgba(0,0,0,.45);background:#120710}
+.memory-photo img{width:100%;height:100%;object-fit:cover;transition:opacity .5s,transform 1s}
+.memory-copy{padding:10px 10px}
+.memory-copy h2{font:500 clamp(38px,5vw,65px)/1 "Cormorant Garamond",serif;color:#ffe9ef;margin-bottom:18px}
+.memory-copy p{color:#ad9aa2;line-height:1.9;font-size:15px}
+.counter{margin-top:24px;color:#ff8fa9;font-size:11px;letter-spacing:3px;text-transform:uppercase}
+.memory-actions{display:flex;gap:10px;margin-top:22px}
+.memory-actions button{padding:11px 17px;border-radius:999px;background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.1);cursor:pointer}
+
+/* question */
+.question-wrap{max-width:850px;margin:auto}
+.question-card{margin:28px auto 0;padding:40px;border-radius:30px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(20px);box-shadow:0 30px 90px rgba(0,0,0,.4)}
+.question-card h2{font:500 clamp(38px,6vw,70px)/1 "Cormorant Garamond",serif;color:#ffe7ed}
+.actions{display:flex;justify-content:center;gap:14px;align-items:center;margin-top:30px;min-height:62px}
+.no{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#a999a0}
+
+/* AI */
+.ai-card{max-width:760px;margin:28px auto 0;padding:34px;border-radius:28px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(22px)}
+.question-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#ff8ea8;margin-bottom:17px}
+#aiQuestion{min-height:90px;display:flex;align-items:center;justify-content:center;font:500 clamp(27px,4vw,43px)/1.25 "Cormorant Garamond",serif;color:#ffe8ee}
+textarea{width:100%;min-height:125px;margin-top:22px;border-radius:18px;border:1px solid rgba(255,255,255,.09);outline:none;background:rgba(0,0,0,.25);color:#fff;padding:18px;font:14px Inter;resize:none}
+textarea:focus{border-color:rgba(255,80,120,.5);box-shadow:0 0 30px rgba(255,40,100,.1)}
+.status{font-size:11px;color:#ff91aa;margin-top:13px;min-height:16px}
+#loading{display:none} #loading.show{display:block}
+.dots:after{content:"";animation:dots 1.4s infinite}@keyframes dots{0%{content:""}33%{content:"."}66%{content:".."}100%{content:"..."}}
+
+/* final */
+.final-photo{width:min(250px,60vw);height:min(310px,42vh);margin:0 auto 24px;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 25px 90px rgba(0,0,0,.5)}
+.final-photo img{width:100%;height:100%;object-fit:cover}
+.final p{max-width:620px;margin:20px auto;color:#bba8b0;line-height:2;font-size:15px}
+.signature{font:500 28px "Cormorant Garamond",serif;color:#ff8fa9}
+
+/* particles/music/progress */
+.particles{position:fixed;inset:0;pointer-events:none;z-index:10;overflow:hidden}
+.p{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffd6df;animation:float linear infinite}
+@keyframes float{from{transform:translateY(105vh);opacity:0}15%{opacity:.7}85%{opacity:.4}to{transform:translateY(-10vh);opacity:0}}
+.music{position:fixed;right:20px;bottom:20px;z-index:100;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:white;cursor:pointer;backdrop-filter:blur(15px)}
+.progress{position:fixed;top:22px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:7px}
+.dot{width:7px;height:7px;border-radius:20px;background:rgba(255,255,255,.2);transition:.4s}.dot.active{width:24px;background:#ff4f81;box-shadow:0 0 15px rgba(255,70,110,.6)}
+.fade-img{opacity:0;transform:scale(1.03)}
+
+@media(max-width:700px){
+ .page{padding:18px}
+ .memory-layout{grid-template-columns:1fr;gap:16px}
+ .memory-photo{height:43vh;max-height:none}
+ .memory-copy{text-align:center}
+ .memory-copy h2{font-size:42px}
+ .memory-copy p{font-size:13px}
+ .question-card,.ai-card{padding:25px 18px}
+ .opening-photo{height:43vh}
+}
+</style>
+</head>
+
+<body>
+<div class="bg"></div>
+<div class="particles" id="particles"></div>
+
+<div class="progress">
+  <div class="dot active" id="dot1"></div>
+  <div class="dot" id="dot2"></div>
+  <div class="dot" id="dot3"></div>
+  <div class="dot" id="dot4"></div>
+  <div class="dot" id="dot5"></div>
+</div>
+
+<button class="music" id="musicButton" onclick="toggleMusic()">♪</button>
+<audio id="music" loop preload="auto">
+  <source src="dildaara.mp3" type="audio/mpeg">
+</audio>
+
+<!-- OPENING -->
+<section class="page active" id="page1">
+  <div class="content">
+    <div class="opening-photo">
+      <img src="photos/memory-1.jpg" alt="Our memory">
+    </div>
+    <div class="eyebrow">made only for you</div>
+    <h1>Hey Babu...</h1>
+    <p class="subtitle">I wanted to give you something a little different.<br>A tiny world made from our memories. ❤️</p>
+    <button class="btn small-btn" onclick="openOurWorld()">Open it ❤️</button>
+  </div>
+</section>
+
+<!-- MEMORIES -->
+<section class="page" id="page2">
+  <div class="content">
+    <div class="eyebrow">our little memories</div>
+    <div class="memory-layout">
+      <div class="memory-photo">
+        <img id="memoryImage" src="photos/memory-1.jpg" alt="Memory">
+      </div>
+      <div class="memory-copy">
+        <h2 id="memoryTitle">The beginning of my favorite collection.</h2>
+        <p id="memoryText">Every picture has a story. But somehow, the best part of every story is simply that you're in it.</p>
+        <div class="counter" id="memoryCounter">Memory 1 / 5</div>
+        <div class="memory-actions">
+          <button onclick="prevMemory()">←</button>
+          <button onclick="nextMemory()">Next memory →</button>
+        </div>
+        <button class="btn small-btn" onclick="goToPage(3)">I have a question for you ❤️</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOVE QUESTION -->
+<section class="page" id="page3">
+  <div class="content question-wrap">
+    <div class="heart">❤️</div>
+    <div class="eyebrow">be honest</div>
+    <h1>Do you love me?</h1>
+    <p class="subtitle">There is technically a wrong answer here. Just saying. 😌</p>
+    <div class="question-card">
+      <div class="actions">
+        <button class="btn" onclick="yesClicked()">Yes, obviously ❤️</button>
+        <button class="btn no" id="noButton">No</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI -->
+<section class="page" id="page4">
+  <div class="content">
+    <div class="eyebrow">just between us</div>
+    <h1>Let's talk about us.</h1>
+    <p class="subtitle">Every answer changes the next question. So tell me what your heart actually thinks. ❤️</p>
+    <div class="ai-card">
+      <div class="question-label">a question from my heart</div>
+      <div id="aiQuestion">Thinking of something special for you...</div>
+      <textarea id="answer" placeholder="Write what's in your heart... ❤️"></textarea>
+      <button class="btn" id="sendButton" onclick="sendAnswer()" style="margin-top:16px">Send my answer ❤️</button>
+      <div class="status" id="loading">Thinking about your answer<span class="dots"></span></div>
+      <div class="status" id="saved"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="page final" id="page5">
+  <div class="content">
+    <div class="final-photo">
+      <img src="photos/memory-5.jpg" alt="Us">
+    </div>
+    <div class="eyebrow">one last thing</div>
+    <h1>It's always you.</h1>
+    <p>
+      Out of all the people in this world, somehow I found you.
+      And if I had to choose again — in every lifetime, in every universe —
+      I'd still choose you.
+    </p>
+    <div class="signature">Forever yours ❤️</div>
+  </div>
+</section>
+
+<script>
+let currentPage=1;
+let memoryIndex=0;
+let previousQuestion="";
+let conversation="";
+let loveAnswer="";
+
+const memories=[
+  {
+    img:"photos/memory-1.jpg",
+    title:"The beginning of my favorite collection.",
+    text:"Every picture has a story. But somehow, the best part of every story is simply that you're in it."
+  },
+  {
+    img:"photos/memory-2.jpg",
+    title:"That smile.",
+    text:"I don't think you realize how easily your smile can turn an ordinary moment into one I want to remember forever."
+  },
+  {
+    img:"photos/memory-3.jpg",
+    title:"One of those moments.",
+    text:"Crowded places, noisy moments, a hundred things happening around us... and somehow I still only notice you."
+  },
+  {
+    img:"photos/memory-4.jpg",
+    title:"A memory I could replay.",
+    text:"Some moments don't need a perfect picture. They just need the right two people."
+  },
+  {
+    img:"photos/memory-5.jpg",
+    title:"My favorite person.",
+    text:"If someone asked me what my favorite part of all these memories is, I wouldn't choose a picture. I'd choose you."
+  }
+];
+
+const music=document.getElementById("music");
+let musicPlaying=false;
+
+function toggleMusic(){
+  if(musicPlaying){music.pause();musicPlaying=false;document.getElementById("musicButton").textContent="♪"}
+  else{music.play().then(()=>{musicPlaying=true;document.getElementById("musicButton").textContent="♫"}).catch(()=>{});}
+}
+
+function openOurWorld(){
+  music.play().then(()=>{musicPlaying=true;document.getElementById("musicButton").textContent="♫"}).catch(()=>{});
+  goToPage(2);
+}
+
+function goToPage(n){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById("page"+n).classList.add("active");
+  currentPage=n;
+  document.querySelectorAll(".dot").forEach(d=>d.classList.remove("active"));
+  document.getElementById("dot"+n).classList.add("active");
+  if(n===4 && !previousQuestion) generateFirstQuestion();
+}
+
+function renderMemory(){
+  const item=memories[memoryIndex];
+  const img=document.getElementById("memoryImage");
+  img.classList.add("fade-img");
+  setTimeout(()=>{
+    img.src=item.img;
+    document.getElementById("memoryTitle").textContent=item.title;
+    document.getElementById("memoryText").textContent=item.text;
+    document.getElementById("memoryCounter").textContent=`Memory ${memoryIndex+1} / ${memories.length}`;
+    img.onload=()=>img.classList.remove("fade-img");
+  },250);
+}
+function nextMemory(){memoryIndex=(memoryIndex+1)%memories.length;renderMemory()}
+function prevMemory(){memoryIndex=(memoryIndex-1+memories.length)%memories.length;renderMemory()}
+
+function yesClicked(){
+  loveAnswer="Yes, obviously ❤️";
+  conversation=`She answered the question "Do you love me?" with "${loveAnswer}".`;
+  goToPage(4);
+}
+
+const noButton=document.getElementById("noButton");
+let escapeLevel=0;
+function escapeNo(){
+  escapeLevel++;
+  noButton.style.position="fixed";
+  const pad=18;
+  const x=pad+Math.random()*(Math.max(1,innerWidth-noButton.offsetWidth-pad*2));
+  const y=pad+Math.random()*(Math.max(1,innerHeight-noButton.offsetHeight-pad*2));
+  noButton.style.left=x+"px";
+  noButton.style.top=y+"px";
+  noButton.style.transform=`scale(${Math.max(.55,1-escapeLevel*.04)})`;
+}
+noButton.addEventListener("mouseenter",escapeNo);
+noButton.addEventListener("touchstart",e=>{e.preventDefault();escapeNo()});
+
+async function typeQuestion(el,text){
+  el.textContent="";
+  for(const char of text){
+    el.textContent+=char;
+    await new Promise(r=>setTimeout(r,16));
+  }
+}
+
+async function generateFirstQuestion(){
+  const el=document.getElementById("aiQuestion");
+  try{
+    const r=await fetch("/api/love-question",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        previousQuestion:"Do you love me?",
+        answer:loveAnswer,
+        conversation
+      })
+    });
+    const data=await r.json();
+    if(!data.success) throw new Error(data.error||"Gemini error");
+    previousQuestion=data.question;
+    await typeQuestion(el,data.question);
+  }catch(e){
+    console.error(e);
+    previousQuestion="What's one memory with me that always makes you smile? ❤️";
+    await typeQuestion(el,previousQuestion);
+  }
+}
+
+async function sendAnswer(){
+  const box=document.getElementById("answer");
+  const btn=document.getElementById("sendButton");
+  const loading=document.getElementById("loading");
+  const saved=document.getElementById("saved");
+  const answer=box.value.trim();
+  if(!answer){box.focus();return}
+
+  const questionBeingAnswered=previousQuestion;
+  conversation+=`\nQuestion: ${questionBeingAnswered}\nHer answer: ${answer}\n`;
+
+  btn.disabled=true;
+  btn.style.opacity=".5";
+  loading.classList.add("show");
+  saved.textContent="";
+
+  // Email runs independently so it never blocks the AI.
+  fetch("/api/send-answer",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({question:questionBeingAnswered,answer})
+  }).then(r=>r.json()).then(data=>{
+    if(data.success){
+      saved.textContent="❤️ Your answer has been saved.";
+    }else{
+      console.error("Email failed:",data.error);
+    }
+  }).catch(console.error);
+
+  try{
+    const r=await fetch("/api/love-question",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        previousQuestion:questionBeingAnswered,
+        answer,
+        conversation
+      })
+    });
+    const data=await r.json();
+    if(!data.success) throw new Error(data.error||"Gemini error");
+    previousQuestion=data.question;
+    box.value="";
+    await typeQuestion(document.getElementById("aiQuestion"),data.question);
+  }catch(e){
+    console.error(e);
+    alert("I couldn't think of the next question right now ❤️");
+  }
+
+  btn.disabled=false;
+  btn.style.opacity="1";
+  loading.classList.remove("show");
+}
+
+document.getElementById("answer").addEventListener("keydown",e=>{
+  if(e.key==="Enter" && e.ctrlKey) sendAnswer();
+});
+
+// Particles
+const particleBox=document.getElementById("particles");
+for(let i=0;i<32;i++){
+  const p=document.createElement("span");
+  p.className="p";
+  p.style.left=Math.random()*100+"%";
+  p.style.animationDuration=(8+Math.random()*12)+"s";
+  p.style.animationDelay=Math.random()*10+"s";
+  particleBox.appendChild(p);
+}
+</script>
+</body>
+</html>
